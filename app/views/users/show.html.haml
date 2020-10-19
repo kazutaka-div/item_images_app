@@ -1,0 +1,23 @@
+= link_to root_path do
+  .show-top
+    トップページへ
+
+.show-top__head
+  お気に入りした商品
+
+.show-top__line
+  - current_user.likes.each do |like|
+    = link_to item_path(like.item_id) do
+      .show-top__top
+        .show-top__main
+          = image_tag like.item.images.first.src.url, class:"show-top__main__image"
+        .show-top__name
+          = like.item.name
+  
+  - if current_user.likes.blank?
+    .message
+      特にありません
+
+= link_to new_card_path do
+  クレジットカード登録
+

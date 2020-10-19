@@ -1,0 +1,160 @@
+*{
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration: none;
+}
+
+.wrapper{
+  width:100%;
+  height:100%;
+  background-color: lightgray;
+
+  .header{
+    height:50px;
+    padding:50px 0;
+    
+    &__text{
+      text-align: center;
+      line-height: 50px;
+      font-size: 30px;
+      font-weight: bold;
+    }
+  }
+
+  #file-field-area{
+    display: none;
+  }
+
+  .center{
+    margin:0 auto;
+    width:800px;
+    background-color: whitesmoke;
+
+    .item-form{
+      height:100%;
+      margin:0 20px;
+      padding-top:20px;
+
+      .itembox{
+        height:200px;
+        margin:10px 0;
+
+        &__place{
+          width:100%;
+          height:155px;
+          display:flex;
+          overflow: hidden;
+
+          .item-image{
+            width:18%;
+            height:100%;
+            margin-right:2%;
+            // 0の値を指定すると、そのアイテムは縮まなくなる。
+            flex-shrink: 0;
+
+            &__box{
+              height:120px;
+              width:100%;
+              border: 1px solid lightgreen;
+            }
+
+            &__footer{
+              display:flex;
+
+              &__edit{
+                width:50%;
+                text-align: center;
+                border:1px solid gray;
+              }
+
+              &__destroy{
+                width:50%;
+                text-align: center;
+                border: 1px solid gray;
+              }
+            }
+          }
+
+          &__name{
+            background-color: white;
+            width:100%;
+            height:100%;
+
+            &__text{
+              height:100%;
+              display:flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.item-view{
+  width:100%;
+  margin-top:10px;
+  display:flex;
+
+  &__top{
+    margin-right: 10px;
+    border: 1px solid lightgray;
+  }
+
+  &__image{
+    width:100px;
+    height:100px;
+
+    &__image{
+      width:100%;
+      height:100%;
+      border:1px solid lightseagreen;
+    }
+  }
+
+  &__name{
+    text-align: center;
+    border:1px solid lightsalmon;
+  }
+}
+
+.show-item{
+  width:80%;
+  margin:20px auto;
+  
+  &__name{
+
+  }
+
+  &__image{
+    width:500px;
+    height:500px;
+    display:flex;
+    overflow:hidden;
+
+    &__box{
+      width:100%;
+      height:100%;
+      border:1px solid lightskyblue;
+
+      &__small{
+        width:20%;
+        border:1px solid lightpink;
+      }
+    }
+  }
+
+  &__small{
+    display:flex;
+    width:500px;
+  }
+}
+
+.edit-item{
+  margin-top:20px;
+  font-size:2rem;
+}

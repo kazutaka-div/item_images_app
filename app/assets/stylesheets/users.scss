@@ -1,0 +1,54 @@
+.show-top{
+
+  &__head{
+    font-size:2rem;
+  }
+
+  &__line{
+    display:flex;
+  }
+
+  &__top{
+    border:1px solid lightgoldenrodyellow;
+    width:200px;
+    height:200px;
+    margin-right:10px;
+  }
+
+  &__main{
+    border:1px solid lightsalmon;
+
+    &__image{
+      width:100%;
+      height:100%;
+    }
+  }
+
+  &__name{
+    text-align: center;
+    padding-top:20px;
+    font-size:1.5rem;
+  }
+}
+
+.field{
+  margin-bottom:20px;
+}
+
+#user_birthday_1i{
+  text-align: center;
+  width:70px;
+  height:30px;
+}
+
+#user_birthday_2i{
+  text-align: center;
+  width:50px;
+  height:30px;
+}
+
+#user_birthday_3i{
+  text-align: center;
+  width:50px;
+  height:30px;
+}

@@ -1,0 +1,51 @@
+.wrapper
+  .header
+    = link_to root_path do
+      .header__text
+        商品出品
+  .center
+    = form_with model: @item, html: {class: "item-form"}, local: true do |f|
+      .itembox
+        .itembox__name
+          画像
+        .itembox__place
+          - @item.images.each_with_index do |image,i|
+            - if image.persisted?
+              .item-image{data: {index: i}}
+                = image_tag image.src.url, class:"item-image__box"
+                .item-image__footer
+                  %label.item-image__footer__edit{for: "item_images_attributes_#{i}_src"}
+                    編集
+                  .item-image__footer__destroy
+                    削除
+
+          %label.itembox__place__name{for: "item_images_attributes_#{@item.images.length - 1}_src"}
+            .itembox__place__name__text
+              ここにアップロードをしてください
+      
+      #file-field-area
+        = f.fields_for :images do |i| ## :imagesは、メソッド名。imageテーブルの複数形の名前にしないといけない。
+          = i.file_field :src, accept: "image/*", data: {file_field_id: i.index}  ## :srcは、カラム名
+          - if i.object.persisted?
+            = i.hidden_field :id
+            = i.check_box :_destroy
+
+      .itembox
+        .itembox__name
+          名前
+        = f.text_field :name,class:"itembox__itemname"
+        = render partial: 'error-messages', locals: {item: @item, column: "name"}
+
+      .itembox
+        .itembox__name
+          値段
+        = f.text_field :price,class:"itembox__itemname", placeholder: "価格"
+        = render partial: 'error-messages', locals: {item: @item, column: "price"}
+      
+      .itembox
+        .itembox__name
+          都道府県
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "---"}, placeholder: "発送元の地域"
+        = render partial: 'error-messages', locals: {item: @item, column: "prefecture_id"}
+
+      = f.submit "送信", class:"submit"

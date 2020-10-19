@@ -1,0 +1,24 @@
+.show-item__image
+  = image_tag @item.images.first.src.url ,class:"show-item__image__box"
+
+.field
+  ¥#{@item.price}
+
+.field
+  = @item.name
+
+- if @card
+  = "************" + @card[:last4]
+  %br
+  = @card[:exp_month]
+  \/
+  = @card[:exp_year]
+  %br
+  = @card[:brand]
+
+  = link_to buyafter_item_path(@item), method: :post do
+    購入する
+
+- else
+  = link_to cards_path do
+    カードを登録する

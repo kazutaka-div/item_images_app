@@ -1,0 +1,20 @@
+= link_to "トップページへ", root_path
+
+%h1.cardbox
+  クレジットカード
+
+- if @card
+  .card__content
+    = "************" + @card[:last4]
+    %br
+    = @card[:exp_month]
+    \/
+    = @card[:exp_year]
+    %br
+    = @card[:brand]
+  = link_to "削除する", card_path(current_user.card), method: :delete
+
+- else
+  = link_to new_card_path do
+    .cardbox__new
+      クレジットカード登録

@@ -1,0 +1,16 @@
+%h2 住所情報登録
+
+= form_with model: @address, local: true do |f|
+
+  .field
+    = f.label :zipcode
+    .field-plus
+      = f.text_field :zipcode
+
+  .field
+    = f.label :address
+    .field-plus
+      = f.text_field :address
+
+  .actions
+    = f.submit "Sign up"

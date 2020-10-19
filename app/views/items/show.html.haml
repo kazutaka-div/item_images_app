@@ -1,0 +1,40 @@
+.show-item
+  = link_to root_path do
+    トップページへ戻る
+  %h1.show-item__name
+    = @item.name
+  %h1.show-item__prefe
+    = @item.prefecture.name
+  %h1.show-item__prefe
+    ¥：#{@item.price}
+
+  .show-item__image
+    - @item.images.each_with_index do |image, i|
+      = image_tag image.src.url ,class:"show-item__image__box", data: {big_image_index: i}
+  .show-item__small
+    - @item.images.each_with_index do |image, i|
+      = image_tag image.src.url ,class:"show-item__image__box__small", data: {mini_image_index: i}
+
+
+  - if current_user
+    = link_to edit_item_path(@item.id) do
+      %h1.edit-item
+        編集
+
+    = link_to item_path(@item.id), method: :delete do
+      %h1.edit-item
+        削除
+
+    - if current_user.id != @item.user_id
+      = link_to buy_item_path(@item) do
+        %h1.edit-item
+          購入
+    
+    - if @item.like_by?(current_user)
+      = link_to item_like_path(@item.id), method: :delete do
+        %h1.edit-item
+          お気に入り解除
+    - else
+      = link_to item_likes_path(@item.id) do
+        %h1.edit-item
+          お気に入り

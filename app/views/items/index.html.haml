@@ -1,0 +1,27 @@
+%h1.title
+  トップページ
+.user
+  - if user_signed_in?
+    = link_to destroy_user_session_path, method:"delete", data: {turbolinks: :false} do
+      ログアウト
+    = link_to new_item_path do
+      商品出品へ
+    = link_to user_path(current_user) do
+      マイページへ
+  - else
+    = link_to new_user_registration_path,  data: {turbolinks: :false} do
+      新規会員登録
+    = link_to new_user_session_path, data: {turbolinks: :false}  do
+      ログイン
+    = link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, method: :post
+
+.item-view
+  - @items.each do |item|
+    = link_to item_path(item.id) do
+      .item-view__top
+        .item-view__image
+          = image_tag item.images.first.src.url, class:"item-view__image__image"
+        .item-view__name
+          = item.name
+
+
